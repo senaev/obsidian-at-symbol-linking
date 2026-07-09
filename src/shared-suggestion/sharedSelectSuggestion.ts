@@ -65,7 +65,10 @@ export async function sharedSelectSuggestion(
 			value.obj?.filePath
 		) as TFile;
 	}
-	let alias = (!settings.insertFileNameOnly && value.obj?.alias) || "";
+	let alias =
+		((!settings.insertFileNameOnly || value.obj?.isCreateNewOption) &&
+			value.obj?.alias) ||
+		"";
 
 	if (settings.includeSymbol) {
 		// Use the triggered symbol if provided, otherwise fall back to global trigger symbol
